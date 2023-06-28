@@ -10,8 +10,12 @@ export default class Floor {
     this.resources = this.experience.resources;
     this.floorWidth = 5;
     this.floorLength = 20;
-    this.floorPosition = { x: 0, y: 0, z: this.floorLength / 2 };
-    this.floorRotation = { x: -Math.PI * 0.5, y: 0, z: 0 };
+    this.floorPosition = { x: 0, y: 0, z: 0 };
+    this.floorRotation = new THREE.Quaternion();
+    this.floorRotation.setFromAxisAngle(
+      new THREE.Vector3(-1, 0, 0),
+      Math.PI * 0.5
+    );
     this.setGeometry();
     this.setTextures();
     this.setMaterial();
@@ -42,11 +46,12 @@ export default class Floor {
       displacementMap: this.textures.displacementMap,
       roughnessMap: this.textures.roughnessMap,
       metalnessMap: this.textures.metalnessMap,
+      side: THREE.DoubleSide,
     });
   }
   setMesh() {
     this.mesh = new THREE.Mesh(this.geometry, this.material);
-    this.mesh.rotation.copy(this.floorRotation);
+    this.mesh.quaternion.copy(this.floorRotation);
     this.mesh.position.copy(this.floorPosition);
     // this.mesh.rotation.z = Math.PI * 0.25;
     this.mesh.receiveShadow = true;
@@ -57,23 +62,24 @@ export default class Floor {
     this.setBody();
   }
   setShape() {
-    this.floorShape = new CANNON.Box(
-      new CANNON.Vec3(this.floorWidth / 2, this.floorLength / 2, 0.001)
-    );
+    this.floorShape = new CANNON.Plane();
   }
   setBody() {
-    this.floorBody = new CANNON.Body();
-    this.floorBody.addShape(this.floorShape);
-    this.floorBody.mass = 0;
+    this.floorBody = new CANNON.Body({
+      mass: 0,
+      shape: this.floorShape,
+    });
     // this.floorBody.type = CANNON.Body.STATIC;
     this.floorBody.quaternion.setFromAxisAngle(
       new CANNON.Vec3(-1, 0, 0),
       Math.PI * 0.5
     );
-    this.physics.addBody(this.floorBody);
+    this.floorBody.position.set(0, 0, 0);
     this.experience.world.physicsWorldObjects.push({
       mesh: this.mesh,
       body: this.floorBody,
+      material: this.experience.world.defaultMaterial,
     });
+    this.physics.addBody(this.floorBody);
   }
 }
