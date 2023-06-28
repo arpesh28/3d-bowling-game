@@ -1,4 +1,4 @@
-# Bowling Game (Under Development
+# Bowling Game (Under Development)
 
 ## Setup
 Download [Node.js](https://nodejs.org/en/download/).
