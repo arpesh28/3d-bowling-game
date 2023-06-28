@@ -43,10 +43,9 @@ export default class Floor {
       map: this.textures.color,
       aoMap: this.textures.aoMap,
       normalMap: this.textures.normalMap,
-      displacementMap: this.textures.displacementMap,
       roughnessMap: this.textures.roughnessMap,
       metalnessMap: this.textures.metalnessMap,
-      side: THREE.DoubleSide,
+      // side: THREE.DoubleSide,
     });
   }
   setMesh() {
@@ -75,7 +74,7 @@ export default class Floor {
       new CANNON.Vec3(-1, 0, 0),
       Math.PI * 0.5
     );
-    // this.floorBody.position.set(0, 0, 0);
+    this.floorBody.position.set(0, 0, 0);
     this.experience.world.physicsWorldObjects.push({
       mesh: this.mesh,
       body: this.floorBody,

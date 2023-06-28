@@ -17,7 +17,6 @@ export default class Ball {
 
     this.setModel();
     this.setPhysics();
-    this.setPhysics();
   }
 
   setModel() {
@@ -42,7 +41,10 @@ export default class Ball {
     this.ballBody = new CANNON.Body({
       mass: 1,
       shape: this.ballShape,
+      position: new CANNON.Vec3(0, 2, 0),
+      allowSleep: true,
     });
+    console.log(this.ballShape);
     this.ballBody.position.copy(child.position);
     this.ballBody.quaternion.copy(child.quaternion);
     this.experience.world.physics.addBody(this.ballBody);

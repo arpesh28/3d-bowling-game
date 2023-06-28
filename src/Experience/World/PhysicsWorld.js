@@ -9,7 +9,7 @@ export default class PhysicsWorld {
     this.physics = new CANNON.World();
     this.physics.broadphase = new CANNON.SAPBroadphase(this.physics);
     this.physics.allowSleep = true;
-    this.physics.gravity = new CANNON.Vec3(0, 0, -9.82);
+    this.physics.gravity = new CANNON.Vec3(0, -9.82, 0);
   }
   setDefaultMaterial() {
     this.defaultMaterial = new CANNON.Material("default");
