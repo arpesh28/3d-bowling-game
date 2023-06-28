@@ -9,6 +9,7 @@ export default class Floor {
     this.floorWidth = 5;
     this.floorLength = 20;
     this.setGeometry();
+    this.setTextures();
     this.setMaterial();
     this.setMesh();
   }
@@ -16,8 +17,27 @@ export default class Floor {
   setGeometry() {
     this.geometry = new THREE.PlaneGeometry(5, this.floorLength);
   }
+  setTextures() {
+    this.textures = {};
+
+    this.textures.color = this.resources.items.colorFloor;
+    this.textures.color.colorSpace = THREE.SRGBColorSpace;
+
+    this.textures.aoMap = this.resources.items.aoFloor;
+    this.textures.normalMap = this.resources.items.normalFloor;
+    this.textures.displacementMap = this.resources.items.dispFloor;
+    this.textures.roughnessMap = this.resources.items.roughFloor;
+    this.textures.metalnessMap = this.resources.items.metalFloor;
+  }
   setMaterial() {
-    this.material = new THREE.MeshBasicMaterial({ color: "#ffffff" });
+    this.material = new THREE.MeshStandardMaterial({
+      map: this.textures.color,
+      aoMap: this.textures.aoMap,
+      normalMap: this.textures.normalMap,
+      displacementMap: this.textures.displacementMap,
+      roughnessMap: this.textures.roughnessMap,
+      metalnessMap: this.textures.metalnessMap,
+    });
   }
   setMesh() {
     this.mesh = new THREE.Mesh(this.geometry, this.material);

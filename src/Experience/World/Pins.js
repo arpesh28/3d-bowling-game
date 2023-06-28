@@ -15,19 +15,19 @@ export default class Pins {
 
   setModel(name, position) {
     this.model[name] = this.resource.scene.clone();
-    this.model[name].scale.set(3.5, 3.5, 3.5);
+    this.model[name].scale.set(4, 4, 4);
     this.model[name].position.copy(position);
     this.scene.add(this.model[name]);
   }
   setPins() {
-    this.setModel("1", { x: -2, y: 0, z: 0 });
-    this.setModel("2", { x: -1, y: 0, z: 0 });
-    this.setModel("3", { x: 0, y: 0, z: 0 });
-    this.setModel("4", { x: 1, y: 0, z: 0 });
-    this.setModel("5", { x: 2, y: 0, z: 0 });
-    this.setModel("6", { x: -1, y: 0, z: 1 });
-    this.setModel("7", { x: 0, y: 0, z: 1 });
-    this.setModel("8", { x: 1, y: 0, z: 1 });
-    this.setModel("9", { x: 0, y: 0, z: 2 });
+    this.setModel("1", { x: -2, y: 0.55, z: 1 });
+    this.setModel("2", { x: -1, y: 0.55, z: 1 });
+    this.setModel("3", { x: 0, y: 0.55, z: 1 });
+    this.setModel("4", { x: 1, y: 0.55, z: 1 });
+    this.setModel("5", { x: 2, y: 0.55, z: 1 });
+    this.setModel("6", { x: -1, y: 0.55, z: 2 });
+    this.setModel("7", { x: 0, y: 0.55, z: 2 });
+    this.setModel("8", { x: 1, y: 0.55, z: 2 });
+    this.setModel("9", { x: 0, y: 0.55, z: 3 });
   }
 }
