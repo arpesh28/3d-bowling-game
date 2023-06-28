@@ -15,7 +15,7 @@ export default class Renderer {
     this.setInstance();
   }
   setInstance() {
-    this.instance = new THREE.WebGL1Renderer({
+    this.instance = new THREE.WebGLRenderer({
       canvas: this.canvas,
       antialias: true,
     });

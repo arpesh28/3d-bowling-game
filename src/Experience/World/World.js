@@ -23,6 +23,9 @@ export default class World extends PhysicsWorld {
       this.ball = new Ball();
       this.pins = new Pins();
       this.environment = new Environment();
+
+      //  Set Contacts
+      this.setBallContactMaterial(this.ball.ballMaterial);
     });
   }
   update() {
@@ -30,6 +33,10 @@ export default class World extends PhysicsWorld {
     for (const object of this.physicsWorldObjects) {
       object.mesh.position.copy(object.body.position);
       object.mesh.quaternion.copy(object.body.quaternion);
+    }
+    if (this.ball?.model) {
+      this.ball.model.position.copy(this.ball.ballBody.position);
+      this.ball.model.quaternion.copy(this.ball.ballBody.quaternion);
     }
   }
 }
