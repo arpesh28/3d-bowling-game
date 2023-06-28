@@ -1,4 +1,4 @@
-# Three.js Journey
+# Bowling Game (Under Development
 
 ## Setup
 Download [Node.js](https://nodejs.org/en/download/).
