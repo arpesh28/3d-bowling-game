@@ -16,6 +16,7 @@ export default class World extends PhysicsWorld {
     this.scene = this.experience.scene;
     this.resources = this.experience.resources;
     this.physicsWorldObjects = [];
+    this.modelObjects = [];
     //  Wait for resources
     this.resources.on("resourcesReady", () => {
       //  Setup
@@ -34,9 +35,13 @@ export default class World extends PhysicsWorld {
       object.mesh.position.copy(object.body.position);
       object.mesh.quaternion.copy(object.body.quaternion);
     }
-    if (this.ball?.model) {
-      this.ball.model.position.copy(this.ball.ballBody.position);
-      this.ball.model.quaternion.copy(this.ball.ballBody.quaternion);
+    for (const object of this.modelObjects) {
+      object.model.position.copy(object.body.position);
+      object.model.quaternion.copy(object.body.quaternion);
     }
+    // if (this.ball?.model) {
+    //   this.ball.model.position.copy(this.ball.ballBody.position);
+    //   this.ball.model.quaternion.copy(this.ball.ballBody.quaternion);
+    // }
   }
 }

@@ -45,7 +45,7 @@ export default class Floor {
       normalMap: this.textures.normalMap,
       roughnessMap: this.textures.roughnessMap,
       metalnessMap: this.textures.metalnessMap,
-      // side: THREE.DoubleSide,
+      side: THREE.DoubleSide,
     });
   }
   setMesh() {

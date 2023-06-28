@@ -33,6 +33,7 @@ export default class Ball {
   setMesh() {
     this.mesh = new THREE.Mesh(this.geometry, this.material);
     this.mesh.position.copy(this.position);
+    this.mesh.castShadow = true;
     this.scene.add(this.mesh);
   }
 
@@ -40,6 +41,7 @@ export default class Ball {
     this.model = this.resource.scene;
     this.model.position.copy(this.position);
     this.model.scale.set(0.2, 0.2, 0.2);
+    this.model.castShadow = true;
     this.scene.add(this.model);
   }
   setPhysics() {
@@ -61,6 +63,7 @@ export default class Ball {
       mesh: this.mesh,
       body: this.ballBody,
     });
+    this.world.modelObjects.push({ model: this.model, body: this.ballBody });
     this.world.physics.addBody(this.ballBody);
   }
   setBallMaterial() {
