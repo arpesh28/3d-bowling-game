@@ -51,7 +51,8 @@ export default class Floor {
   }
   setMesh() {
     this.mesh = new THREE.Mesh(this.geometry, this.material);
-    this.mesh.quaternion.copy(this.floorRotation);
+    // this.mesh.quaternion.copy(this.floorRotation);
+    this.mesh.rotation.x = -Math.PI * 0.5;
     this.mesh.position.copy(this.floorPosition);
     // this.mesh.rotation.z = Math.PI * 0.25;
     this.mesh.receiveShadow = true;
@@ -74,11 +75,10 @@ export default class Floor {
       new CANNON.Vec3(-1, 0, 0),
       Math.PI * 0.5
     );
-    this.floorBody.position.set(0, 0, 0);
+    // this.floorBody.position.set(0, 0, 0);
     this.experience.world.physicsWorldObjects.push({
       mesh: this.mesh,
       body: this.floorBody,
-      material: this.experience.world.defaultMaterial,
     });
     this.physics.addBody(this.floorBody);
   }

@@ -42,7 +42,6 @@ export default class Ball {
     this.ballBody = new CANNON.Body({
       mass: 1,
       shape: this.ballShape,
-      material: this.experience.world.defaultMaterial,
     });
     this.ballBody.position.copy(child.position);
     this.ballBody.quaternion.copy(child.quaternion);
