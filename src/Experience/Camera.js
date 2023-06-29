@@ -11,9 +11,11 @@ export default class Camera {
     this.sizes = this.experience.sizes;
     this.scene = this.experience.scene;
     this.canvas = this.experience.canvas;
+    this.gui = this.experience.gui.dat;
 
     this.setInstance();
     this.setOrbitControls();
+    this.setDebug();
   }
 
   setInstance() {
@@ -23,7 +25,7 @@ export default class Camera {
       0.1,
       100
     );
-    this.instance.position.set(0, 4, 15);
+    this.instance.position.set(0, 10, 24);
     this.scene.add(this.instance);
   }
 
@@ -36,7 +38,9 @@ export default class Camera {
     this.instance.aspect = this.sizes.width / this.sizes.height;
     this.instance.updateProjectionMatrix();
   }
-
+  setDebug() {
+    this.gui.add(this.instance.position, "x", -Math.PI * 2, Math.PI * 2, 0.05);
+  }
   update() {
     this.controls.update();
   }

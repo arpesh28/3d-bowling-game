@@ -8,8 +8,8 @@ export default class Floor {
     this.physics = this.experience.world.physics;
     this.scene = this.experience.scene;
     this.resources = this.experience.resources;
-    this.floorWidth = 5;
-    this.floorLength = 20;
+    this.floorWidth = 6;
+    this.floorLength = 30;
     this.floorPosition = { x: 0, y: 0, z: 0 };
     this.floorRotation = new THREE.Quaternion();
     this.floorRotation.setFromAxisAngle(

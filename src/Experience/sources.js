@@ -12,9 +12,14 @@ export default [
     ],
   },
   {
+    name: "bowling_alley",
+    type: "gltfLoader",
+    path: "models/bowling_alley/3/scene.gltf",
+  },
+  {
     name: "stadiumMap",
     type: "textureLoader",
-    path: ["textures/environmentMap/2/7.jpg"],
+    path: ["textures/environmentMap/2/8.jpg"],
   },
   {
     name: "bowling_ball",

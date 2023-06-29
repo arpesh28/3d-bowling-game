@@ -5,6 +5,7 @@ import * as THREE from "three";
 import Sizes from "./Utils/Sizes";
 import Time from "./Utils/Time";
 import Helpers from "./Utils/Helpers";
+import Gui from "./Utils/GUI";
 import Camera from "./Camera";
 import Renderer from "./Renderer";
 
@@ -32,6 +33,7 @@ export default class Experience {
     this.canvas = canvas;
 
     //  Setup
+    this.gui = new Gui();
     this.sizes = new Sizes();
     this.time = new Time();
     this.scene = new THREE.Scene();

@@ -29,7 +29,7 @@ export default class Pins {
   }
   setMaterial() {
     this.material = new THREE.MeshStandardMaterial({
-      // visible: false,
+      visible: false,
       wireframe: true,
       color: 0xffffff,
     });
@@ -69,7 +69,7 @@ export default class Pins {
   }
   setPinMaterial() {}
   setPins() {
-    this.setModel("1", { x: 0, y: 3, z: 0 });
+    this.setModel("1", { x: 0, y: 3, z: -4 });
     // this.setModel("2", { x: -1, y: 0.55, z: 1 });
     // this.setModel("3", { x: 0, y: 0.55, z: 1 });
     // this.setModel("4", { x: 1, y: 0.55, z: 1 });
@@ -82,7 +82,7 @@ export default class Pins {
   setModel(name, position) {
     // this.model = this.resource.scene.clone();
     this.model = this.resource.scene;
-    this.model.scale.set(0.2, 0.2, 0.2);
+    this.model.scale.set(0.5, 0.5, 0.5);
     this.model.castShadow = true;
     this.model.receiveShadow = true;
     this.model.position.copy(position);
