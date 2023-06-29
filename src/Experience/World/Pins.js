@@ -22,6 +22,7 @@ export default class Pins {
     this.setGeometry();
     this.setMaterial();
     this.setShape();
+    this.setPinMaterial();
 
     this.setPins();
   }
@@ -78,11 +79,14 @@ export default class Pins {
       mass: 1,
       shape: this.pinShape,
       allowSleep: true,
+      material: this.pinMaterial,
     });
     pinBody.position.copy(position);
     return pinBody;
   }
-
+  setPinMaterial() {
+    this.pinMaterial = new CANNON.Material("pin");
+  }
   setModel(position) {
     const model = this.resource.scene.clone();
     model.scale.set(0.5, 0.5, 0.5);

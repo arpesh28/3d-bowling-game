@@ -66,7 +66,7 @@ export default class Ball {
   }
   setBody(child) {
     this.ballBody = new CANNON.Body({
-      mass: 1,
+      mass: 2,
       shape: this.ballShape,
       material: this.ballMaterial,
     });

@@ -1,5 +1,6 @@
 //  libs
 import * as THREE from "three";
+import * as CANNON from "cannon-es";
 
 //  custom classes
 import Experience from "../Experience";
@@ -27,6 +28,13 @@ export default class World extends PhysicsWorld {
 
       //  Set Contacts
       this.setBallContactMaterial(this.ball.ballMaterial);
+      this.setPinBallContactMaterial(
+        this.ball.ballMaterial,
+        this.pins.pinMaterial
+      );
+      window.addEventListener("click", () => {
+        this.ball.ballBody.applyImpulse(new CANNON.Vec3(0, 0, -5));
+      });
     });
   }
   update() {
