@@ -8,18 +8,42 @@ export default class Pins {
     this.scene = this.experience.scene;
     this.world = this.experience.world;
     this.resources = this.experience.resources;
+
     this.pinSize = { x: 0.5, y: 0.5, z: 0.5 };
+    this.numRows = 4;
+    this.rowOffset = 1;
+    this.pinOffset = 0.5;
+    this.pins = new THREE.Group();
+    this.pinsMeshModelBody = [];
+    this.scene.add(this.pins);
 
     this.resource = this.resources.items.bowling_pin;
 
-    this.setPins();
-
     this.setGeometry();
     this.setMaterial();
-    this.setMesh();
-    this.setPhysics();
-  }
+    this.setShape();
 
+    this.setPins();
+  }
+  setPins() {
+    for (let row = 0; row < this.numRows; row++) {
+      const numPins = this.numRows - row;
+
+      for (let pin = 0; pin < numPins; pin++) {
+        const x = pin - (numPins - 1) * 0.5;
+        const z = row * this.rowOffset - 15;
+        const position = { x, y: 0, z };
+        const mesh = this.setMesh(position);
+        const body = this.setBody(position);
+        const model = this.setModel(position);
+
+        this.scene.add(model, mesh);
+        this.world.physics.addBody(body);
+        this.world.physicsWorldObjects.push({ mesh, body });
+        this.world.modelObjects.push({ model, body });
+      }
+    }
+  }
   setGeometry() {
     this.geometry = new THREE.BoxGeometry(
       this.pinSize.x,
@@ -34,16 +58,12 @@ export default class Pins {
       color: 0xffffff,
     });
   }
-  setMesh() {
-    this.mesh = new THREE.Mesh(this.geometry, this.material);
-    this.mesh.position.set(0, 1, 0);
-    this.scene.add(this.mesh);
+  setMesh(position) {
+    const mesh = new THREE.Mesh(this.geometry, this.material);
+    mesh.position.copy(position);
+    return mesh;
   }
-  setPhysics() {
-    this.setShape();
-    this.setPinMaterial();
-    this.setBody();
-  }
+
   setShape() {
     this.pinShape = new CANNON.Box(
       new CANNON.Vec3(
@@ -53,44 +73,26 @@ export default class Pins {
       )
     );
   }
-  setBody() {
-    this.pinBody = new CANNON.Body({
+  setBody(position) {
+    const pinBody = new CANNON.Body({
       mass: 1,
       shape: this.pinShape,
       allowSleep: true,
     });
-    this.pinBody.position.copy(this.mesh.position);
-    this.world.physics.addBody(this.pinBody);
-    this.world.physicsWorldObjects.push({
-      mesh: this.mesh,
-      body: this.pinBody,
-    });
-    this.world.modelObjects.push({ model: this.model, body: this.pinBody });
+    pinBody.position.copy(position);
+    return pinBody;
   }
-  setPinMaterial() {}
-  setPins() {
-    this.setModel("1", { x: 0, y: 3, z: -4 });
-    // this.setModel("2", { x: -1, y: 0.55, z: 1 });
-    // this.setModel("3", { x: 0, y: 0.55, z: 1 });
-    // this.setModel("4", { x: 1, y: 0.55, z: 1 });
-    // this.setModel("5", { x: 2, y: 0.55, z: 1 });
-    // this.setModel("6", { x: -1, y: 0.55, z: 2 });
-    // this.setModel("7", { x: 0, y: 0.55, z: 2 });
-    // this.setModel("8", { x: 1, y: 0.55, z: 2 });
-    // this.setModel("9", { x: 0, y: 0.55, z: 3 });
-  }
-  setModel(name, position) {
-    // this.model = this.resource.scene.clone();
-    this.model = this.resource.scene;
-    this.model.scale.set(0.5, 0.5, 0.5);
-    this.model.castShadow = true;
-    this.model.receiveShadow = true;
-    this.model.position.copy(position);
-    this.model.traverse((child) => {
+
+  setModel(position) {
+    const model = this.resource.scene.clone();
+    model.scale.set(0.5, 0.5, 0.5);
+    model.castShadow = true;
+    model.receiveShadow = true;
+    model.position.copy(position);
+    model.traverse((child) => {
       child.receiveShadow = true;
       child.castShadow = true;
     });
-
-    this.scene.add(this.model);
+    return model;
   }
 }

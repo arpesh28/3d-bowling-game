@@ -57,6 +57,9 @@ export default class Environment {
     this.debugFolderEnvironment.add(this.model.position, "y", -100, 100, 0.1);
     this.debugFolderEnvironment.add(this.model.position, "z", -100, 100, 0.1);
     this.debugFolderLights
+      .add(this.sunlight.shadow.camera, "far", -500, 500, 1)
+      .name("sunlightX");
+    this.debugFolderLights
       .add(this.sunlight.position, "x", -100, 100, 0.1)
       .name("sunlightX");
     this.debugFolderLights
