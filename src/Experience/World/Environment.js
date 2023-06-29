@@ -11,7 +11,7 @@ export default class Environment {
     this.scene = this.experience.scene;
     this.resources = this.experience.resources;
     this.resource = this.resources.items.bowling_alley;
-    this.gui = this.experience.gui.dat;
+    this.gui = this.experience.gui.dat.addFolder("Environment");
     this.setSunlight();
     this.setEnvironmentMap();
     this.setModel();
@@ -28,13 +28,6 @@ export default class Environment {
     this.scene.add(this.sunlight);
   }
   setDebug() {
-    // this.gui.add(this.skybox, "scale", 1, 100, 1);
-    this.debug = { scale: 50 };
-    // this.gui.add(this.skybox, "radius", 1, 100, 1);
-    // this.gui.add(this.skybox, "height", 1, 100, 0.1);
-    // this.gui
-    //   .add(this.debug, "scale", 1, 100, 0.1)
-    //   .onChange((val) => this.skybox.scale.setScalar(val));
     this.gui.add(this.model.position, "x", -100, 100, 0.1);
     this.gui.add(this.model.position, "y", -100, 100, 0.1);
     this.gui.add(this.model.position, "z", -100, 100, 0.1);
@@ -68,7 +61,9 @@ export default class Environment {
 
   setModel() {
     this.model = this.resource.scene;
-    this.model.position.set(-1, 5.7, 60);
+    // this.scene.environment = this.model;
+    console.log(this.model);
+    this.model.position.set(15.3, 5.7, 58.7);
     this.model.scale.set(3, 3, 3);
     this.scene.add(this.model);
   }

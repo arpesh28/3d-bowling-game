@@ -14,7 +14,7 @@ export default [
   {
     name: "bowling_alley",
     type: "gltfLoader",
-    path: "models/bowling_alley/3/scene.gltf",
+    path: "models/bowling_alley/4/scene.gltf",
   },
   {
     name: "stadiumMap",
@@ -34,36 +34,32 @@ export default [
   {
     name: "aoFloor",
     type: "textureLoader",
-    path: "textures/floor/ao.png",
+    path: "textures/floor/4/ao.png",
   },
   {
     name: "metalFloor",
     type: "textureLoader",
-    path: "textures/floor/ao-rough-metal.png",
+    path: "textures/floor/4/metalness.png",
   },
   {
     name: "colorFloor",
     type: "textureLoader",
-    path: "textures/floor/color.png",
+    path: "textures/floor/4/color.png",
   },
   {
     name: "dispFloor",
     type: "textureLoader",
-    path: "textures/floor/disp.png",
+    path: "textures/floor/4/disp.png",
   },
-  // {
-  //   name: "floor",
-  //   type: "textureLoader",
-  //   path: "textures/floor/normal_dx.png",
-  // },
+
   {
     name: "normalFloor",
     type: "textureLoader",
-    path: "textures/floor/normal_gl.png",
+    path: "textures/floor/4/normal.png",
   },
   {
     name: "roughFloor",
     type: "textureLoader",
-    path: "textures/floor/rough.png",
+    path: "textures/floor/4/rough.png",
   },
 ];
