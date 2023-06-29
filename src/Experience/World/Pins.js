@@ -9,7 +9,7 @@ export default class Pins {
     this.world = this.experience.world;
     this.resources = this.experience.resources;
 
-    this.pinSize = { x: 0.5, y: 0.5, z: 0.5 };
+    this.pinSize = { x: 0.5, y: 2, z: 0.5 };
     this.numRows = 4;
     this.rowOffset = 1;
     this.pinOffset = 0.5;
@@ -33,7 +33,7 @@ export default class Pins {
       for (let pin = 0; pin < numPins; pin++) {
         const x = pin - (numPins - 1) * 0.5;
         const z = row * this.rowOffset - 15;
-        const position = { x, y: 0, z };
+        const position = { x, y: 1, z };
         const mesh = this.setMesh(position);
         const body = this.setBody(position);
         const model = this.setModel(position);
