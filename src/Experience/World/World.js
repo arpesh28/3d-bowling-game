@@ -39,9 +39,5 @@ export default class World extends PhysicsWorld {
       object.model.position.copy(object.body.position);
       object.model.quaternion.copy(object.body.quaternion);
     }
-    // if (this.ball?.model) {
-    //   this.ball.model.position.copy(this.ball.ballBody.position);
-    //   this.ball.model.quaternion.copy(this.ball.ballBody.quaternion);
-    // }
   }
 }

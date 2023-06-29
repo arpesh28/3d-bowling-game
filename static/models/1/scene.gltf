@@ -1,0 +1,326 @@
+{
+  "accessors": [
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 851,
+      "max": [
+        1.3405816555023193,
+        0.4991770088672638,
+        19.67583656311035
+      ],
+      "min": [
+        -1.3405817747116089,
+        -0.499176949262619,
+        -0.8395054340362549
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 10212,
+      "componentType": 5126,
+      "count": 851,
+      "max": [
+        0.9999991655349731,
+        0.9999998807907104,
+        1.0
+      ],
+      "min": [
+        -0.9999991655349731,
+        -0.9999998807907104,
+        -1.0
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 851,
+      "max": [
+        0.8750001192092896,
+        1.0000001192092896
+      ],
+      "min": [
+        0.1250000149011612,
+        0.0
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 4032,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 20424,
+      "componentType": 5126,
+      "count": 112,
+      "max": [
+        0.6254083514213562,
+        0.23287604749202728,
+        15.39392375946045
+      ],
+      "min": [
+        -0.625408411026001,
+        -0.23287604749202728,
+        13.194527626037598
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 21768,
+      "componentType": 5126,
+      "count": 112,
+      "max": [
+        0.9998576641082764,
+        0.9999806880950928,
+        0.11566542834043503
+      ],
+      "min": [
+        -0.9998576641082764,
+        -0.9999806880950928,
+        -0.08182046562433243
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 6808,
+      "componentType": 5126,
+      "count": 112,
+      "max": [
+        0.6250001192092896,
+        1.0000001192092896
+      ],
+      "min": [
+        0.6249999403953552,
+        0.0
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 16128,
+      "componentType": 5125,
+      "count": 384,
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "DDO1_Models (https://sketchfab.com/DDO1_Models)",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "source": "https://sketchfab.com/3d-models/bowling-pin-becf1c5ca7424c799af89c9f7ba89998",
+      "title": "Bowling Pin"
+    },
+    "generator": "Sketchfab-15.16.0",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 17664,
+      "name": "floatBufferViews",
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 7704,
+      "byteOffset": 17664,
+      "byteStride": 8,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 23112,
+      "byteOffset": 25368,
+      "byteStride": 12,
+      "name": "floatBufferViews",
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 48480,
+      "uri": "scene.bin"
+    }
+  ],
+  "extensionsUsed": [
+    "KHR_materials_specular"
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "Base",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.8,
+          0.8,
+          0.8,
+          1.0
+        ],
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.0
+      }
+    },
+    {
+      "doubleSided": true,
+      "extensions": {
+        "KHR_materials_specular": {
+          "specularColorFactor": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "specularFactor": 1.0
+        }
+      },
+      "name": "Stripes",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.7999999999999999,
+          0.0,
+          0.0011750899999999982,
+          1.0
+        ],
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.0
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Pin_Base_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0,
+            "TEXCOORD_0": 2
+          },
+          "indices": 3,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Pin_Stripes_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 5,
+            "POSITION": 4,
+            "TEXCOORD_0": 6
+          },
+          "indices": 7,
+          "material": 1,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.220446049250313e-16,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        2.220446049250313e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "Sketchfab_model"
+    },
+    {
+      "children": [
+        2
+      ],
+      "matrix": [
+        0.009999999776482582,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.009999999776482582,
+        0.0,
+        0.0,
+        -0.009999999776482582,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "63c974a845974bfc84db049b824b8d5d.fbx"
+    },
+    {
+      "children": [
+        3
+      ],
+      "name": "RootNode"
+    },
+    {
+      "children": [
+        4,
+        5
+      ],
+      "matrix": [
+        37.84953308105469,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -1.629206793918314e-05,
+        -99.99999999999868,
+        0.0,
+        0.0,
+        16.661483764648217,
+        -2.7145002546124924e-06,
+        0.0,
+        0.0,
+        15.131243705749512,
+        0.0,
+        1.0
+      ],
+      "name": "Pin"
+    },
+    {
+      "mesh": 0,
+      "name": "Pin_Base_0"
+    },
+    {
+      "mesh": 1,
+      "name": "Pin_Stripes_0"
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Sketchfab_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ]
+}

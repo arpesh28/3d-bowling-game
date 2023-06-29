@@ -10,7 +10,7 @@ export default class Ball {
     this.experience = new Experience();
     this.scene = this.experience.scene;
     this.resources = this.experience.resources;
-    this.position = new THREE.Vector3(0, 2, 8);
+    this.position = new THREE.Vector3(0, 2, 2);
     this.world = this.experience.world;
     //  Resource
     this.resource = this.resources.items.bowling_ball;
@@ -42,6 +42,11 @@ export default class Ball {
     this.model.position.copy(this.position);
     this.model.scale.set(0.2, 0.2, 0.2);
     this.model.castShadow = true;
+    this.model.receiveShadow = true;
+    this.model.traverse((child) => {
+      child.receiveShadow = true;
+      child.castShadow = true;
+    });
     this.scene.add(this.model);
   }
   setPhysics() {

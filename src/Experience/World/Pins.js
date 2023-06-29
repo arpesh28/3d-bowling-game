@@ -8,7 +8,7 @@ export default class Pins {
     this.scene = this.experience.scene;
     this.world = this.experience.world;
     this.resources = this.experience.resources;
-    this.pinSize = { x: 0.5, y: 1.5, z: 0.5 };
+    this.pinSize = { x: 0.5, y: 0.5, z: 0.5 };
 
     this.resource = this.resources.items.bowling_pin;
 
@@ -57,6 +57,7 @@ export default class Pins {
     this.pinBody = new CANNON.Body({
       mass: 1,
       shape: this.pinShape,
+      allowSleep: true,
     });
     this.pinBody.position.copy(this.mesh.position);
     this.world.physics.addBody(this.pinBody);
@@ -68,7 +69,7 @@ export default class Pins {
   }
   setPinMaterial() {}
   setPins() {
-    this.setModel("1", { x: -2, y: 0, z: 1 });
+    this.setModel("1", { x: 0, y: 3, z: 0 });
     // this.setModel("2", { x: -1, y: 0.55, z: 1 });
     // this.setModel("3", { x: 0, y: 0.55, z: 1 });
     // this.setModel("4", { x: 1, y: 0.55, z: 1 });
@@ -81,17 +82,15 @@ export default class Pins {
   setModel(name, position) {
     // this.model = this.resource.scene.clone();
     this.model = this.resource.scene;
-    this.model.scale.set(4, 4, 4);
+    this.model.scale.set(0.2, 0.2, 0.2);
     this.model.castShadow = true;
-    console.log(this.model);
-    this.model.traverse((child) => {
-      if (child.isMesh) {
-        child.geometry.center();
-      } else {
-        console.log(child);
-      }
-    });
+    this.model.receiveShadow = true;
     this.model.position.copy(position);
+    this.model.traverse((child) => {
+      child.receiveShadow = true;
+      child.castShadow = true;
+    });
+
     this.scene.add(this.model);
   }
 }

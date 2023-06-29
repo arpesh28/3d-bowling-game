@@ -27,10 +27,14 @@ export default class Environment {
   setEnvironmentMap() {
     this.environmentMap = {};
     this.environmentMap.intensity = 0.3;
-    this.environmentMap.texture = this.resources.items.environmentMapTexture;
-    this.environmentMap.texture.encoding = THREE.SRGBColorSpace;
+    this.environmentMap.texture = this.resources.items.stadiumMap;
+    this.environmentMap.texture.mapping =
+      THREE.EquirectangularReflectionMapping;
+    this.environmentMap.texture.colorSpace = THREE.SRGBColorSpace;
+    // this.environmentMap.texture.encoding = THREE.SRGBColorSpace;
 
     this.scene.environment = this.environmentMap.texture;
+    this.scene.background = this.environmentMap.texture;
 
     this.setEnvironmentMap.updateMaterials = () => {
       this.scene.traverse((child) => {
@@ -39,7 +43,7 @@ export default class Environment {
           child.material instanceof THREE.MeshStandardMaterial
         ) {
           child.material.envMap = this.environmentMap.texture;
-          child.material.envMapIntensity = this.environmentMap.intensity;
+          child.material.envMapIntensity = this.environmentMap?.intensity;
           child.material.needsUpdate = true;
         }
       });
