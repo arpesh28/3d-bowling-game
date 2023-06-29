@@ -9,28 +9,80 @@ export default class Environment {
   constructor() {
     this.experience = new Experience();
     this.scene = this.experience.scene;
+    this.helpers = this.experience.helpers;
     this.resources = this.experience.resources;
     this.resource = this.resources.items.bowling_alley;
-    this.gui = this.experience.gui.dat.addFolder("Environment");
-    this.setSunlight();
+    this.gui = this.experience.gui.dat;
+    this.debugFolderEnvironment = this.gui.addFolder("Environment");
+
     this.setEnvironmentMap();
+    this.setLight();
     this.setModel();
     this.setDebug();
   }
-
+  setLight() {
+    this.debugFolderLights = this.gui.addFolder("Lights");
+    this.setSunlight();
+    this.setSpotLight();
+  }
   setSunlight() {
     this.sunlight = new THREE.DirectionalLight("#ffffff", 4);
     this.sunlight.castShadow = true;
-    this.sunlight.shadow.camera.far = 15;
+    this.sunlight.shadow.camera.far = 150;
     this.sunlight.shadow.mapSize.set(1024, 1024);
     this.sunlight.shadow.normalBias = 0.05;
-    this.sunlight.position.set(3.5, 2, -1.25);
+    this.sunlight.position.set(-25, 43, 100);
     this.scene.add(this.sunlight);
+    this.helpers.setLightHelper("sunlightHelper", this.sunlight);
+  }
+  setSpotLight() {
+    this.spotLight = new THREE.SpotLight(
+      "#0x78ff00",
+      100,
+      20,
+      Math.PI * 0.1,
+      1,
+      1
+    );
+    this.spotLight.castShadow = true;
+    this.spotLight.shadow.camera.far = 150;
+    this.spotLight.shadow.mapSize.set(1024, 1024);
+    this.spotLight.shadow.normalBias = 0.05;
+    // this.spotLight.position.set(-25, 43, 100);
+    this.scene.add(this.spotLight);
+    this.helpers.setLightHelper("spotLightHelper", this.spotLight);
   }
   setDebug() {
-    this.gui.add(this.model.position, "x", -100, 100, 0.1);
-    this.gui.add(this.model.position, "y", -100, 100, 0.1);
-    this.gui.add(this.model.position, "z", -100, 100, 0.1);
+    this.debugFolderEnvironment.add(this.model.position, "x", -100, 100, 0.1);
+    this.debugFolderEnvironment.add(this.model.position, "y", -100, 100, 0.1);
+    this.debugFolderEnvironment.add(this.model.position, "z", -100, 100, 0.1);
+    this.debugFolderLights
+      .add(this.sunlight.position, "x", -100, 100, 0.1)
+      .name("sunlightX");
+    this.debugFolderLights
+      .add(this.sunlight.position, "y", -100, 100, 0.1)
+      .name("sunlightY");
+    this.debugFolderLights
+      .add(this.sunlight.position, "z", -100, 100, 0.1)
+      .name("sunlightZ");
+    this.debugFolderLights
+      .add(this.spotLight.position, "x", -100, 100, 0.1)
+      .name("spotLightX");
+    this.debugFolderLights
+      .add(this.spotLight.position, "y", -100, 100, 0.1)
+      .name("spotLightY");
+    this.debugFolderLights
+      .add(this.spotLight.position, "z", -100, 100, 0.1)
+      .name("spotLightZ");
+    this.debugFolderLights
+      .add(this.spotLight, "intensity", 1, 1000, 0.1)
+      .name("Spotlight Intensity");
+    this.debugFolderLights
+      .add(this.spotLight, "distance", 1, 100, 0.1)
+      .name("Spotlight Distance");
+    this.debugFolderLights
+      .add(this.spotLight, "angle", -Math.PI * 2, Math.PI * 2, 0.1)
+      .name("Spotlight Distance");
   }
   setEnvironmentMap() {
     this.environmentMap = {};
@@ -62,7 +114,6 @@ export default class Environment {
   setModel() {
     this.model = this.resource.scene;
     // this.scene.environment = this.model;
-    console.log(this.model);
     this.model.position.set(15.3, 5.7, 58.7);
     this.model.scale.set(3, 3, 3);
     this.scene.add(this.model);

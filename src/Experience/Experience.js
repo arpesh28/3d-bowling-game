@@ -40,10 +40,10 @@ export default class Experience {
     this.resources = new Resources(sources);
     this.camera = new Camera();
     this.renderer = new Renderer();
-    this.helpers = new Helpers();
 
     //  World
     this.world = new World();
+    this.helpers = new Helpers();
 
     //  Sizes resize event
     this.sizes.on("resize", () => {

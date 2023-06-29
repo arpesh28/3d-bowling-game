@@ -10,7 +10,8 @@ export default class Ball {
     this.experience = new Experience();
     this.scene = this.experience.scene;
     this.resources = this.experience.resources;
-    this.position = new THREE.Vector3(0, 2, 2);
+    this.gui = this.experience.gui.dat.addFolder("Ball");
+    this.position = new THREE.Vector3(0, 2, 12);
     this.world = this.experience.world;
     //  Resource
     this.resource = this.resources.items.bowling_ball;
@@ -20,6 +21,12 @@ export default class Ball {
     this.setMaterial();
     this.setMesh();
     this.setPhysics();
+    this.debug();
+  }
+  debug() {
+    this.gui.add(this.ballBody.position, "x", -3, 3, 0.1);
+    this.gui.add(this.ballBody.position, "y", 0.12, 10, 0.01);
+    this.gui.add(this.ballBody.position, "z", -40, 30, 0.1);
   }
   setGeometry() {
     this.geometry = new THREE.SphereGeometry(0.523);
