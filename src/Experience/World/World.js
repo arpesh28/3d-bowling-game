@@ -34,7 +34,7 @@ export default class World extends PhysicsWorld {
       );
       this.setPinPinContactMaterial(this.pins.pinMaterial);
       window.addEventListener("click", () => {
-        this.ball.ballBody.applyImpulse(new CANNON.Vec3(0, 0, -5));
+        this.ball.ballBody.applyImpulse(new CANNON.Vec3(0, 0, -50));
       });
     });
   }
