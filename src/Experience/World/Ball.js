@@ -11,7 +11,7 @@ export default class Ball {
     this.scene = this.experience.scene;
     this.resources = this.experience.resources;
     this.gui = this.experience.gui.dat.addFolder("Ball");
-    this.position = new THREE.Vector3(0, 2, 12);
+    this.position = new THREE.Vector3(0, 5, 12);
     this.world = this.experience.world;
     //  Resource
     this.resource = this.resources.items.bowling_ball;
@@ -64,19 +64,19 @@ export default class Ball {
   setShape() {
     this.ballShape = new CANNON.Sphere(0.523);
   }
-  setBody(child) {
+  setBody() {
     this.ballBody = new CANNON.Body({
       mass: 2,
       shape: this.ballShape,
       material: this.ballMaterial,
     });
     this.ballBody.position.copy(this.position);
+    this.world.physics.addBody(this.ballBody);
     this.world.physicsWorldObjects.push({
       mesh: this.mesh,
       body: this.ballBody,
     });
     this.world.modelObjects.push({ model: this.model, body: this.ballBody });
-    this.world.physics.addBody(this.ballBody);
   }
   setBallMaterial() {
     this.ballMaterial = new CANNON.Material("ball");

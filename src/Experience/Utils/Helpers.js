@@ -13,14 +13,16 @@ export default class Helpers {
   }
   setAxes() {
     this.axesHelper = new THREE.AxesHelper(5);
-    this.scene.add(this.axesHelper);
+    // this.scene.add(this.axesHelper);
   }
   setLightHelper(type, light) {
     if (type === "sunlightHelper") {
       this.sunLightHelper = new THREE.DirectionalLightHelper(light, 20);
+      // this.sunLightHelper.visible = false
       this.scene.add(this.sunLightHelper);
     } else if (type === "spotLightHelper") {
       this.spotlightHelper = new THREE.SpotLightHelper(light);
+      // this.spotlightHelper.visible = false;
       this.scene.add(this.spotlightHelper);
     }
   }

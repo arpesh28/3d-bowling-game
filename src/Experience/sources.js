@@ -29,7 +29,7 @@ export default [
   {
     name: "bowling_pin",
     type: "gltfLoader",
-    path: "models/1/scene.gltf",
+    path: "models/1/scene2.gltf",
   },
   {
     name: "aoFloor",

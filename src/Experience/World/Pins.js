@@ -37,7 +37,6 @@ export default class Pins {
         const mesh = this.setMesh(position);
         const body = this.setBody(position);
         const model = this.setModel(position);
-
         this.scene.add(model, mesh);
         this.world.physics.addBody(body);
         this.world.physicsWorldObjects.push({ mesh, body });
@@ -88,6 +87,7 @@ export default class Pins {
     this.pinMaterial = new CANNON.Material("pin");
   }
   setModel(position) {
+    this.model = this.resource.scene;
     const model = this.resource.scene.clone();
     model.scale.set(0.5, 0.5, 0.5);
     model.castShadow = true;

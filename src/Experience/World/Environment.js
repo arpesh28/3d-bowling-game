@@ -37,19 +37,16 @@ export default class Environment {
   }
   setSpotLight() {
     this.spotLight = new THREE.SpotLight(
-      "#0x78ff00",
-      100,
-      20,
+      0x78ff00,
+      54.5,
+      57.4,
       Math.PI * 0.1,
-      1,
-      1
+      10,
+      10
     );
     this.spotLight.castShadow = true;
-    this.spotLight.shadow.camera.far = 150;
     this.spotLight.shadow.mapSize.set(1024, 1024);
-    this.spotLight.shadow.normalBias = 0.05;
-    // this.spotLight.position.set(-25, 43, 100);
-    this.scene.add(this.spotLight);
+    // this.scene.add(this.spotLight);
     this.helpers.setLightHelper("spotLightHelper", this.spotLight);
   }
   setDebug() {
@@ -58,7 +55,7 @@ export default class Environment {
     this.debugFolderEnvironment.add(this.model.position, "z", -100, 100, 0.1);
     this.debugFolderLights
       .add(this.sunlight.shadow.camera, "far", -500, 500, 1)
-      .name("sunlightX");
+      .name("Sunlight Far");
     this.debugFolderLights
       .add(this.sunlight.position, "x", -100, 100, 0.1)
       .name("sunlightX");
@@ -85,7 +82,7 @@ export default class Environment {
       .name("Spotlight Distance");
     this.debugFolderLights
       .add(this.spotLight, "angle", -Math.PI * 2, Math.PI * 2, 0.1)
-      .name("Spotlight Distance");
+      .name("Spotlight Angle");
   }
   setEnvironmentMap() {
     this.environmentMap = {};
@@ -95,9 +92,6 @@ export default class Environment {
       THREE.EquirectangularReflectionMapping;
     this.environmentMap.texture.colorSpace = THREE.SRGBColorSpace;
     this.scene.environment = this.environmentMap.texture;
-    // this.scene.background = this.environmentMap.texture;
-    this.scene.rotation.set(0, Math.PI * 0.5, 0);
-    // this.scene.position.set(0, 0, 0);
 
     this.setEnvironmentMap.updateMaterials = () => {
       this.scene.traverse((child) => {
