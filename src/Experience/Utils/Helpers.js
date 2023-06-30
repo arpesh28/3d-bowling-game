@@ -19,11 +19,11 @@ export default class Helpers {
     if (type === "sunlightHelper") {
       this.sunLightHelper = new THREE.DirectionalLightHelper(light, 20);
       // this.sunLightHelper.visible = false
-      this.scene.add(this.sunLightHelper);
+      // this.scene.add(this.sunLightHelper);
     } else if (type === "spotLightHelper") {
       this.spotlightHelper = new THREE.SpotLightHelper(light);
       // this.spotlightHelper.visible = false;
-      this.scene.add(this.spotlightHelper);
+      // this.scene.add(this.spotlightHelper);
     }
   }
 }
