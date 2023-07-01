@@ -4,6 +4,7 @@ import { GroundProjectedSkybox } from "three/addons/objects/GroundProjectedSkybo
 
 //  custom classes
 import Experience from "../Experience";
+import EnvironmentWireFrame from "./EnvironmentWireFrame";
 
 export default class Environment {
   constructor() {
@@ -14,6 +15,7 @@ export default class Environment {
     this.resource = this.resources.items.bowling_alley;
     this.gui = this.experience.gui.dat;
     this.debugFolderEnvironment = this.gui.addFolder("Environment");
+    this.EnvWireFrame = new EnvironmentWireFrame();
 
     this.setEnvironmentMap();
     this.setLight();
