@@ -53,7 +53,7 @@ export default class Pins {
   }
   setMaterial() {
     this.material = new THREE.MeshStandardMaterial({
-      // visible: false,
+      visible: false,
       wireframe: true,
       color: 0xffffff,
     });
