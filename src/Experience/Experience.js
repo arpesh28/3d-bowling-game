@@ -16,6 +16,9 @@ import sources from "./sources";
 import World from "./World/World";
 import Resources from "./Utils/Resorces";
 
+//  GamePlay
+import GamePlay from "./GamePlay/GamePlay";
+
 //  singleton experience class for accessing it globally
 let instance = null;
 
@@ -40,6 +43,7 @@ export default class Experience {
     this.resources = new Resources(sources);
     this.camera = new Camera();
     this.renderer = new Renderer();
+    this.gamePlay = new GamePlay();
 
     //  World
     this.world = new World();
@@ -64,5 +68,6 @@ export default class Experience {
     this.camera.update();
     this.renderer.update();
     this.world.update();
+    this.gamePlay.update();
   }
 }
