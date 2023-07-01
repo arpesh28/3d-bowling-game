@@ -44,9 +44,5 @@ export default class World extends PhysicsWorld {
       object.mesh.position.copy(object.body.position);
       object.mesh.quaternion.copy(object.body.quaternion);
     }
-    for (const object of this.modelObjects) {
-      object.model.position.copy(object.body.position);
-      object.model.quaternion.copy(object.body.quaternion);
-    }
   }
 }
