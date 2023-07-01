@@ -35,7 +35,7 @@ export default class Environment {
     this.sunlight.shadow.normalBias = 0.05;
     this.sunlight.position.set(-25, 43, 100);
     this.scene.add(this.sunlight);
-    this.helpers.setLightHelper("sunlightHelper", this.sunlight);
+    // this.helpers.setLightHelper("sunlightHelper", this.sunlight);
   }
   setSpotLight() {
     this.spotLight = new THREE.SpotLight(
@@ -49,7 +49,7 @@ export default class Environment {
     this.spotLight.castShadow = true;
     this.spotLight.shadow.mapSize.set(1024, 1024);
     // this.scene.add(this.spotLight);
-    this.helpers.setLightHelper("spotLightHelper", this.spotLight);
+    // this.helpers.setLightHelper("spotLightHelper", this.spotLight);
   }
   setDebug() {
     this.debugFolderEnvironment.add(this.model.position, "x", -100, 100, 0.1);

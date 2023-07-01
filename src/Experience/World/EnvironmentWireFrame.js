@@ -7,7 +7,6 @@ export default class EnvironmentWireFrame {
     this.experience = new Experience();
     this.scene = this.experience.scene;
     this.world = this.experience.world;
-    this.gui = this.experience.gui.dat.addFolder("Arena");
 
     this.group = new THREE.Group();
     this.scene.add(this.group);
