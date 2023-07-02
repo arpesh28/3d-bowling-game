@@ -34,7 +34,7 @@ export default class Pin {
 
   setBody() {
     this.body = new CANNON.Body({
-      mass: 1,
+      mass: 0.4,
       shape: this.shape,
       allowSleep: true,
       material: this.pinMaterial,

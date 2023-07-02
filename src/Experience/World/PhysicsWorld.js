@@ -17,7 +17,7 @@ export default class PhysicsWorld {
     this.defaultContactMaterial = new CANNON.ContactMaterial(
       this.defaultMaterial,
       this.defaultMaterial,
-      { friction: 0.1, restitution: 0.7 }
+      { friction: 0.4, restitution: 0.8 }
     );
     this.physics.defaultContactMaterial = this.defaultContactMaterial;
   }
@@ -25,7 +25,7 @@ export default class PhysicsWorld {
     this.ballDefaultContactMaterial = new CANNON.ContactMaterial(
       this.defaultMaterial,
       ballMaterial,
-      { friction: 0.2, restitution: 0.6 }
+      { friction: 0.4, restitution: 0.8 }
     );
     this.physics.addContactMaterial(this.ballDefaultContactMaterial);
   }
@@ -33,7 +33,7 @@ export default class PhysicsWorld {
     this.pinBallContactMaterial = new CANNON.ContactMaterial(
       pinMaterial,
       ballMaterial,
-      { friction: 0.2, restitution: 2 }
+      { friction: 0.5, restitution: 2 }
     );
     this.physics.addContactMaterial(this.pinBallContactMaterial);
   }
@@ -41,7 +41,7 @@ export default class PhysicsWorld {
     this.pinPinContactMaterial = new CANNON.ContactMaterial(
       pinMaterial,
       pinMaterial,
-      { friction: 0.2, restitution: 1.5 }
+      { friction: 0.2, restitution: 1.8 }
     );
     this.physics.addContactMaterial(this.pinPinContactMaterial);
   }

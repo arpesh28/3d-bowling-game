@@ -1,14 +1,17 @@
 import * as THREE from "three";
+import * as CANNON from "cannon-es";
 import Experience from "../Experience";
 import EventEmitter from "../Utils/EventEmitter";
 
 export default class Mouse {
   constructor() {
     this.experience = new Experience();
+    this.ball = this.experience.world.ball;
 
     this.mouseStart = new THREE.Vector2();
     this.mouseEnd = new THREE.Vector2();
     this.isDragging = false;
+    this.forceFactor = 0.05;
 
     this.addEvents();
     this.onMouseDown();
@@ -44,13 +47,15 @@ export default class Mouse {
         .subVectors(this.mouseEnd, this.mouseStart)
         .normalize();
       this.distance = this.mouseEnd.distanceTo(this.mouseStart);
-      // this.pushBall();
+      this.force = new CANNON.Vec3(this.direction.x, 0, this.direction.y).scale(
+        Math.min(this.distance * this.forceFactor, 22)
+      );
+      console.log(this.distance * this.forceFactor);
+      this.pushBall();
     }
   }
 
-  // pushBall(isDragging, ball) {
-  //   // if (isDragging !== this.isDragging) {
-  //   console.log(isDragging, this.isDragging, ball);
-  //   // }
-  // }
+  pushBall() {
+    this.ball.ballBody.applyImpulse(this.force, this.ball.ballBody.position);
+  }
 }

@@ -10,6 +10,9 @@ import Floor from "./Floor";
 import Pins from "./Pins";
 import PhysicsWorld from "./PhysicsWorld";
 
+//  GamePlay
+import GamePlay from "../GamePlay/GamePlay";
+
 export default class World extends PhysicsWorld {
   constructor() {
     super();
@@ -25,6 +28,7 @@ export default class World extends PhysicsWorld {
       this.ball = new Ball();
       this.pins = new Pins();
       this.environment = new Environment();
+      this.gamePlay = new GamePlay();
 
       //  Set Contacts
       this.setBallContactMaterial(this.ball.ballMaterial);
@@ -33,9 +37,6 @@ export default class World extends PhysicsWorld {
         this.pins.pinMaterial
       );
       this.setPinPinContactMaterial(this.pins.pinMaterial);
-      // window.addEventListener("click", () => {
-      //   this.ball.ballBody.applyImpulse(new CANNON.Vec3(0, 0, -50));
-      // });
     });
   }
   update() {
