@@ -12,6 +12,7 @@ import PhysicsWorld from "./PhysicsWorld";
 
 //  GamePlay
 import GamePlay from "../GamePlay/GamePlay";
+import Sounds from "../GamePlay/Sounds";
 
 export default class World extends PhysicsWorld {
   constructor() {
@@ -28,6 +29,7 @@ export default class World extends PhysicsWorld {
       this.ball = new Ball();
       this.pins = new Pins();
       this.environment = new Environment();
+      this.sounds = new Sounds();
       this.gamePlay = new GamePlay();
 
       //  Set Contacts
