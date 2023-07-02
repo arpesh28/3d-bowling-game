@@ -1,4 +1,6 @@
 # Bowling Game (Under Development)
+![image](https://github.com/arpesh28/3d-bowling-game/assets/44309224/cbe3c99e-82bc-47c9-b7ea-a50310b52ad2)
+
 
 ## Setup
 Download [Node.js](https://nodejs.org/en/download/).
