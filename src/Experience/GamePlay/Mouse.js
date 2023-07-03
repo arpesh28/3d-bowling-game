@@ -61,7 +61,7 @@ export default class Mouse {
   }
 
   pushBall() {
-    // this.sounds?.playSound(this, "ballRolling");
+    this.sounds?.playSound("ballRolling");
     this.ball.ballBody.applyImpulse(this.force, this.ball.ballBody.position);
     // this.pins.bo.addEventListener("collide", (e) => {
     //   console.log(e);

@@ -28,6 +28,13 @@ export default class World extends PhysicsWorld {
       this.floor = new Floor();
       this.ball = new Ball();
       this.pins = new Pins();
+      this.ball.ballBody.addEventListener("collide", (event) =>
+        this.sounds.handleCollision(
+          event,
+          this.ball.ballBody,
+          this.pins.pinsBody
+        )
+      );
       this.environment = new Environment();
       this.sounds = new Sounds();
       this.gamePlay = new GamePlay();

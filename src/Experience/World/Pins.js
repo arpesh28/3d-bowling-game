@@ -16,7 +16,7 @@ export default class Pins {
     this.numRows = 4;
     this.rowOffset = 1;
     this.pinOffset = 0.5;
-    this.pinsMeshModelBody = [];
+    this.pinsBody = [];
 
     this.setGeometry();
     this.setMaterial();
@@ -40,6 +40,7 @@ export default class Pins {
           this.shape,
           this.pinMaterial
         );
+        this.pinsBody.push(pin.body);
         this.scene.add(pin.group);
       }
     }

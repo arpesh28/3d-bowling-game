@@ -7,8 +7,9 @@ export default class Sounds {
     this.ballRolling1Sound = new Audio(ballSound1);
     this.ballRolling2Sound = new Audio(ballSound2);
     this.strikeSound = new Audio(strikeSound);
+    this.isStrike = false;
   }
-  playSound(mouse, sound) {
+  playSound(sound) {
     switch (sound) {
       case "ballRolling":
         this.ballRolling2Sound.volume = 0.2;
@@ -16,11 +17,22 @@ export default class Sounds {
         break;
       case "strike":
         this.strikeSound.play();
+        this.isStrike = true;
         this.ballRolling2Sound.pause();
+        this.strikeSound.volume = 0.15;
         this.ballRolling2Sound.currentTime = 0;
         break;
       default:
         break;
+    }
+  }
+  handleCollision(event, ballBody, pinsBody) {
+    const contact = event.contact;
+    const bodyA = contact.bi;
+    const bodyB = contact.bj;
+    const strikeExist = pinsBody.includes(bodyB);
+    if (!this.isStrike && bodyA === ballBody && strikeExist) {
+      this.playSound("strike");
     }
   }
 }
