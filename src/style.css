@@ -21,6 +21,15 @@ body {
   top: 0;
   left: 0;
   background-color: rgb(12, 12, 12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.overlay h2 {
+  color: white;
+  position: relative;
+  top: -8rem;
+  font-size: 45px;
 }
 .startBtn {
   width: 12rem;

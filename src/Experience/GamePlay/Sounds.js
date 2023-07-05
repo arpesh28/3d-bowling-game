@@ -1,6 +1,7 @@
 import ballSound1 from "/audios/ball1.mp3";
 import ballSound2 from "/audios/ball2.mp3";
 import strikeSound from "/audios/strike.mp3";
+import gsap from "gsap";
 
 export default class Sounds {
   constructor() {
