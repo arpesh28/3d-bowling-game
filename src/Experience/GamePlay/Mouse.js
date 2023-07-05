@@ -1,6 +1,7 @@
 import * as THREE from "three";
 import * as CANNON from "cannon-es";
 import Experience from "../Experience";
+const overlay = document.getElementById("banner");
 export default class Mouse {
   constructor() {
     this.experience = new Experience();
@@ -35,17 +36,23 @@ export default class Mouse {
   }
 
   onMouseDown(e) {
+    console.log();
+    if (!this.experience.gameStart) return;
     this.isDragging = true;
     this.mouseStart.set(e?.clientX, e?.clientY);
   }
 
   onMouseDrag(e) {
+    if (!this.experience.gameStart) return;
+
     if (this.isDragging) {
       this.mouseEnd.set(e?.clientX, e?.clientY);
     }
   }
 
   onMouseUp(e) {
+    if (!this.experience.gameStart) return;
+
     if (this.isDragging) {
       this.isDragging = false;
       this.direction = new THREE.Vector2()

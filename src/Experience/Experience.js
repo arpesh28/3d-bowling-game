@@ -24,6 +24,7 @@ export default class Experience {
     if (instance) {
       return instance;
     }
+    this.gameStart = false;
     instance = this;
 
     //  Global access
